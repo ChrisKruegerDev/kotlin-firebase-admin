@@ -1,4 +1,8 @@
 # Project exclude paths
-/.gradle/
-/build/
-/build/js/packages/kfirebase/kotlin/
+build
+.gradle
+.idea
+out
+*.iml
+.directory
+local.properties

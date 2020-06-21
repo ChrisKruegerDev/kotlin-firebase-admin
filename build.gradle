@@ -1,17 +1,81 @@
+buildscript {
+    ext.kotlin_version = '1.3.72'
+
+    repositories {
+        google()
+        jcenter()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.5'
+    }
+}
+
 plugins {
     id 'org.jetbrains.kotlin.js' version '1.3.72'
+    id 'com.jfrog.bintray' version '1.8.5'
+    id 'maven-publish'
 }
 
-group 'com.kfirebase'
-version '1.0-SNAPSHOT'
-
-repositories {
-    mavenCentral()
+allprojects {
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
 }
+
+def projectVersion = "1.0.4"
+
+version projectVersion
+group "com.chrisbln"
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-js"
     testImplementation "org.jetbrains.kotlin:kotlin-test-js"
 }
 
-kotlin.target.nodejs { }
+task sourcesJar(type: Jar) {
+    from "$projectDir/src"
+    classifier = 'sources'
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from components.kotlin
+            groupId "com.chrisbln"
+            artifactId "kfirebase"
+            version projectVersion
+            artifact sourcesJar
+
+            pom {
+                name = 'kfirebase'
+                description = 'Firebase Functions for Kotlin/JS'
+                url = 'https://github.com/chrisbln/kfirebase'
+
+                licenses {
+                    license {
+                        name = 'The Apache Software License, Version 2.0'
+                        url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                scm {
+                    url = 'https://github.com/chrisbln/kfirebase'
+                }
+                developers {
+                    developer {
+                        id = 'chrisbln'
+                        name = 'Christian Krueger'
+                        email = 'christian.krueger@moviebase.app'
+                    }
+                }
+            }
+        }
+    }
+}
+
+apply from: 'bintray.gradle'
