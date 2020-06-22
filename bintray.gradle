@@ -10,15 +10,15 @@ bintray {
 
     pkg {
         repo = 'maven'
-        name = 'kfirebase'
+        name = 'kotlin-firebase-functions'
         userOrg = "chrisbln"
         licenses = ['Apache-2.0']
-        vcsUrl = 'https://github.com/chrisbln/kfirebase.git'
-        websiteUrl = 'https://github.com/chrisbln/kfirebase'
+        vcsUrl = 'https://github.com/chrisbln/kotlin-firebase-functions.git'
+        websiteUrl = 'https://github.com/chrisbln/kotlin-firebase-functions'
         publicDownloadNumbers = true
         version {
             name = project.version
-            desc = 'Firebase Functions for Kotlin/JS'
+            desc = 'Firebase Functions Wrapper for Kotlin/JS'
             released = new Date()
             vcsTag = project.version
         }

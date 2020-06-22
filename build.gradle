@@ -28,7 +28,7 @@ allprojects {
     }
 }
 
-def projectVersion = "1.0.4"
+def projectVersion = "1.0.0"
 
 version projectVersion
 group "com.chrisbln"
@@ -48,13 +48,13 @@ publishing {
         maven(MavenPublication) {
             from components.kotlin
             groupId "com.chrisbln"
-            artifactId "kfirebase"
+            artifactId "kotlin-firebase-functions"
             version projectVersion
             artifact sourcesJar
 
             pom {
-                name = 'kfirebase'
-                description = 'Firebase Functions for Kotlin/JS'
+                name = 'kotlin-firebase-functions'
+                description = 'Firebase Functions Wrapper for Kotlin/JS'
                 url = 'https://github.com/chrisbln/kfirebase'
 
                 licenses {
@@ -64,7 +64,7 @@ publishing {
                     }
                 }
                 scm {
-                    url = 'https://github.com/chrisbln/kfirebase'
+                    url = 'https://github.com/chrisbln/kotlin-firebase-functions'
                 }
                 developers {
                     developer {
