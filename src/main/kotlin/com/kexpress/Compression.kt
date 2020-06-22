@@ -1,6 +1,6 @@
-package com.kfirebase.express
+package com.kexpress
 
-import com.kfirebase.require
+import com.kjs.require
 
 class Compression {
     val compression: dynamic get() = require("compression")

@@ -1,4 +1,4 @@
-package com.kfirebase
+package com.kjs
 
 external fun require(module: String): dynamic
 external val exports: dynamic

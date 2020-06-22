@@ -1,4 +1,4 @@
-package com.kfirebase.express
+package com.kexpress
 
 external interface ExpressApp {
     fun delete(path: String, functions: (Request, Response) -> Unit)

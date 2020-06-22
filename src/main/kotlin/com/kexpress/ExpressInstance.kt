@@ -1,6 +1,6 @@
-package com.kfirebase.express
+package com.kexpress
 
-import com.kfirebase.require
+import com.kjs.require
 
 class ExpressInstance : Express {
     override val express: dynamic get() = require("express")
