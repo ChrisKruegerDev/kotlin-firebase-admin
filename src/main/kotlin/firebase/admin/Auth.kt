@@ -8,7 +8,6 @@ import kotlin.js.Promise
 external interface Auth {
     val app: dynamic
 
-    fun user(): UserBuilder
     fun createCustomToken(uid: String): Promise<String>
     fun createCustomToken(uid: String, developerClaims: dynamic): Promise<String>
     fun createSessionCookie(idToken: String, sessionCookieOptions: SessionCookieOptions): Promise<String>

@@ -1,7 +1,14 @@
 package firebase.admin.firestore
 
 external interface Firestore {
-    val app: dynamic //The app associated with this Firestore service instance
-    fun batch(): WriteBatch //Creates a write batch, used for performing multiple writes as a single atomic operation
+    /**
+     * The app associated with this Firestore service instance
+     */
+    val app: dynamic
+
+    /**
+     * Creates a write batch, used for performing multiple writes as a single atomic operation
+     */
+    fun batch(): WriteBatch
     fun collection(collectionPath: String): CollectionReference
 }
