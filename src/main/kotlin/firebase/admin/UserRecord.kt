@@ -1,7 +1,5 @@
 package firebase.admin
 
-import firebase.UserMetadata
-
 
 external interface UserRecord {
     val customClaims: dynamic

@@ -1,8 +1,5 @@
 package firebase.admin
 
-import firebase.ListUsersResult
-import firebase.UserImportOptions
-import firebase.UserImportRecord
 import kotlin.js.Promise
 
 external interface Auth {

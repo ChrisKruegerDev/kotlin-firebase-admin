@@ -53,28 +53,25 @@ implementation(npm("kotlinx-coroutines-core", "1.3.7"))
 Initialize a new firebase app instance:
 
 ```kotlin
-val firebaseApp = FirebaseAppInstance()
-val admin = firebaseApp.admin
-val config = firebaseApp.config
-admin.initializeApp(config.firebase)
+val admin: FirebaseAdmin = admin()
+val functions: FirebaseFunctions = functions()
+admin.initializeApp(functions.config.firebase)
 ```
 
 #### HTTP request
 
 ```kotlin
-external val exports: dynamic
-
-val api = ExpressInstance().app
-api.get("") { _, res ->
+val app = express()
+app.get("") { _, res ->
     res.status(200).send("hello")
 }
-exports.hello = firebaseApp.https.onRequest(api)
+exports.hello = firebaseApp.https.onRequest(app)
 ```
 
 #### Firestore trigger
 
 ```kotlin
-exports.updateName = firebaseApp.firestoreTrigger
+exports.updateName = functions.firestore
             .document("user/{userId}")
             .onUpdate { change, _ ->
                 val user = change.before.data<UserData>()
