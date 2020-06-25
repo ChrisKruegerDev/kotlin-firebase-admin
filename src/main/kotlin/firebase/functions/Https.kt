@@ -1,8 +1,7 @@
 package firebase.functions
 
-import express.ExpressApp
-
+import express.Express
 
 external interface Https {
-    fun onRequest(handler: ExpressApp)
+    fun onRequest(handler: Express)
 }

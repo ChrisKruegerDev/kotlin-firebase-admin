@@ -4,9 +4,7 @@ buildscript {
     repositories {
         google()
         jcenter()
-        maven {
-            url "https://plugins.gradle.org/m2/"
-        }
+        maven { url = "https://plugins.gradle.org/m2/"}
     }
 
     dependencies {
@@ -25,6 +23,7 @@ allprojects {
     repositories {
         mavenCentral()
         jcenter()
+        maven { url = "https://dl.bintray.com/chrisbln/maven" }
     }
 }
 
@@ -35,6 +34,7 @@ group "com.chrisbln"
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-js"
+    implementation "com.chrisbln:kotlin-express:1.0.0"
     testImplementation "org.jetbrains.kotlin:kotlin-test-js"
 }
 
