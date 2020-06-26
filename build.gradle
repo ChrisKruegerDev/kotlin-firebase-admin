@@ -27,14 +27,14 @@ allprojects {
     }
 }
 
-def projectVersion = "1.1.1"
+def projectVersion = "1.1.4"
 
 version projectVersion
 group "com.chrisbln"
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-js"
-    implementation "com.chrisbln:kotlin-express:1.0.0"
+    implementation "com.chrisbln:kotlin-express:1.0.1"
     testImplementation "org.jetbrains.kotlin:kotlin-test-js"
 }
 

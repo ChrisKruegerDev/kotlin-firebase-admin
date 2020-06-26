@@ -1,10 +1,10 @@
 ## kotlin-firebase-functions
-Kotlin wrapper for Firebase Functions library. Major version number of this wrapper matches that of Firebase itself.
+A lightweight Kotlin wrapper for Firebase Functions backend API library. Major version number of this wrapper matches that of Firebase itself.
 
 ### Setup
-Create a new Kotlin Multiplatform project.
 
-#### Project setup
+#### Project setup for Multiplatform
+Create a new Kotlin Multiplatform project.
 Navigate to folder where function code (Kotlin Multiplatform folder) is going to be stored and type following commands:
 
 ```
@@ -38,7 +38,8 @@ repositories {
 
 To start using `kotlin-firebase-functions` in your Kotlin/JS project, add the following four dependencies to the `dependencies` block for your JavaScript target inside your `build.gradle.kts` or `build.gradle` file:
 ```kotlin
-implementation("com.chrisbln:kotlin-firebase-functions:1.0.0")
+implementation("com.chrisbln:kotlin-firebase-functions:1.1.0")
+implementation("com.chrisbln:kotlin-express:1.0.1")
 
 implementation(npm("text-encoding", "0.7.0"))
 implementation(npm("compression", "1.7.4"))
@@ -53,10 +54,11 @@ implementation(npm("kotlinx-coroutines-core", "1.3.7"))
 Initialize a new firebase app instance:
 
 ```kotlin
-val admin: FirebaseAdmin = admin()
-val functions: FirebaseFunctions = functions()
-admin.initializeApp(functions.config.firebase)
+val app = admin.initializeApp()
 ```
+
+#### HTTP request
+
 
 #### HTTP request
 
