@@ -1,3 +1,5 @@
 package firebase
 
-external interface SetOptions
+external interface SetOptions {
+    val merge: Boolean?
+}

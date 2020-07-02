@@ -10,9 +10,7 @@ external object admin {
     fun initializeApp(options: Any, name: String? = definedExternally): App
 
     object firestore {
-
         open class Timestamp {
-
             companion object {
                 fun now(): Timestamp
                 fun fromDate(date: Date): Timestamp
@@ -23,6 +21,18 @@ external object admin {
             fun toMillis(): Double
             fun isEqual(other: Timestamp): Boolean
         }
+
+        open class FieldValue {
+            companion object {
+                fun increment(n: Int): FieldValue
+            }
+        }
     }
 
+}
+
+external interface App {
+    val name: String
+    fun auth(): Auth
+    fun firestore(): Firestore
 }
