@@ -3,6 +3,9 @@ package firebase
 import kotlin.js.Promise
 
 external interface DocumentReference {
+
+    val id: String
+
     fun get(): Promise<DocumentSnapshot>
     fun collection(collectionPath: String): CollectionReference
 
@@ -14,6 +17,7 @@ external interface DocumentReference {
 
     fun update(data: dynamic): Promise<Any?>
     fun update(field: dynamic, precondition: dynamic = definedExternally): Promise<dynamic>
+
 }
 
 fun DocumentReference.setValues(vararg pairs: Pair<String, Any?>): Promise<WriteResult> {
