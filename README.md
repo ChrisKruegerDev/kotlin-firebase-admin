@@ -59,9 +59,6 @@ val app = admin.initializeApp()
 
 #### HTTP request
 
-
-#### HTTP request
-
 ```kotlin
 val app = express()
 app.get("") { _, res ->
