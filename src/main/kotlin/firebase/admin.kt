@@ -8,13 +8,22 @@ external object admin {
     fun app(name: String? = definedExternally): App
     fun initializeApp(): App
     fun initializeApp(options: Any, name: String? = definedExternally): App
+    fun storage(): storage.Storage
 
-    /**
-     * JS: firebase.storage().bucket("images")
-     */
-    fun storage(): admin.storage.Storage
+    open class App {
+        val name: String
+        fun auth(): Auth
+        fun firestore(): firestore.Firestore
+    }
 
     object firestore {
+
+        fun setLogLevel(level: String)
+
+        open class Firestore {
+            fun collection(collectionPath: String): CollectionReference
+        }
+
         open class Timestamp {
             companion object {
                 fun now(): Timestamp
@@ -46,16 +55,11 @@ external object admin {
              *
              * JS: bucket(name?: string): Bucket;
              */
-            fun bucket(name: String?): Bucket
+            fun bucket(name: String? = definedExternally): Bucket
         }
     }
 
 }
 
-external interface App {
-    val name: String
-    fun auth(): Auth
-    fun firestore(): Firestore
-}
 
 

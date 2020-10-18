@@ -1,13 +1,13 @@
 package firebase
 
 import kotlin.js.Promise
+import kotlin.js.json
 
 external interface Bucket {
 
     val name: String
 
-    fun file(name: String): File
-    fun file(name: String, options: FileOptions?): File
+    fun file(name: String, options: dynamic = definedExternally): File
     fun upload(pathString: String): Promise<UploadResponse>
 
     /**
@@ -18,5 +18,8 @@ external interface Bucket {
 
 }
 
+fun Bucket.file(name: String, resumable: Boolean) = file(name, json(
+    "uploadType" to json("resumable" to resumable)
+))
 
 typealias UploadCallback = (err: Error, file: File?) -> Unit

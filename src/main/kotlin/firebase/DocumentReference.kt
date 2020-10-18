@@ -1,6 +1,7 @@
 package firebase
 
 import kotlin.js.Promise
+import kotlin.js.json
 
 external interface DocumentReference {
 
@@ -10,8 +11,7 @@ external interface DocumentReference {
     fun collection(collectionPath: String): CollectionReference
 
     fun create(data: dynamic): Promise<WriteResult>
-    fun <T> set(data: T): Promise<WriteResult>
-    fun set(data: dynamic, options: SetOptions = definedExternally): Promise<WriteResult>
+    fun set(data: Any, options: Any? = definedExternally): Promise<WriteResult>
 
     fun delete(precondition: Precondition = definedExternally): Promise<WriteResult>
 
@@ -21,9 +21,9 @@ external interface DocumentReference {
 }
 
 fun DocumentReference.setValues(vararg pairs: Pair<String, Any?>): Promise<WriteResult> {
-    return set(jsObject(pairs.asIterable()))
+    return set(json(*pairs))
 }
 
 fun DocumentReference.updateValues(vararg pairs: Pair<String, Any?>): Promise<Any?> {
-    return update(jsObject(pairs.asIterable()))
+    return update(json(*pairs))
 }
