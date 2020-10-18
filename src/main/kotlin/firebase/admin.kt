@@ -9,6 +9,11 @@ external object admin {
     fun initializeApp(): App
     fun initializeApp(options: Any, name: String? = definedExternally): App
 
+    /**
+     * JS: firebase.storage().bucket("images")
+     */
+    fun storage(): admin.storage.Storage
+
     object firestore {
         open class Timestamp {
             companion object {
@@ -29,6 +34,22 @@ external object admin {
         }
     }
 
+    /**
+     * declare namespace admin.storage
+     */
+    object storage {
+        open class Storage {
+            /**
+             *
+             * @returns A [Bucket](https://cloud.google.com/nodejs/docs/reference/storage/latest/Bucket)
+             * instance as defined in the `@google-cloud/storage` package.
+             *
+             * JS: bucket(name?: string): Bucket;
+             */
+            fun bucket(name: String?): Bucket
+        }
+    }
+
 }
 
 external interface App {
@@ -36,3 +57,5 @@ external interface App {
     fun auth(): Auth
     fun firestore(): Firestore
 }
+
+
