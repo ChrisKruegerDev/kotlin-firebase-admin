@@ -1,5 +1,5 @@
-## kotlin-firebase-functions
-A lightweight Kotlin wrapper for Firebase Functions backend API library. Major version number of this wrapper matches that of Firebase itself.
+## kotlin-firebase-admin
+A lightweight Kotlin wrapper for Firebase Admin backend API library. Major version number of this wrapper matches that of Firebase itself.
 
 ### Setup
 
