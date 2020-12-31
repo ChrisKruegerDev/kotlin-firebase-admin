@@ -28,6 +28,9 @@ external object admin {
         }
 
         open class Timestamp {
+            val seconds: Double
+            val nanoseconds: Double
+
             companion object {
                 fun now(): Timestamp
                 fun fromDate(date: Date): Timestamp
@@ -41,6 +44,7 @@ external object admin {
 
         open class FieldValue {
             companion object {
+                fun serverTimestamp(): FieldValue
                 fun increment(n: Int): FieldValue
             }
         }
