@@ -27,7 +27,7 @@ allprojects {
     }
 }
 
-def projectVersion = "1.2.0"
+def projectVersion = "1.2.1"
 
 version projectVersion
 group "com.chrisbln"

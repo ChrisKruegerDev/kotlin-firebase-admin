@@ -11,7 +11,7 @@ external interface DocumentReference {
     fun collection(collectionPath: String): CollectionReference
 
     fun create(data: dynamic): Promise<WriteResult>
-    fun set(data: Any, options: Any? = definedExternally): Promise<WriteResult>
+    fun <T> set(data: T, options: Any? = definedExternally): Promise<WriteResult>
 
     fun delete(precondition: Precondition = definedExternally): Promise<WriteResult>
 
@@ -19,6 +19,8 @@ external interface DocumentReference {
     fun update(field: dynamic, precondition: dynamic = definedExternally): Promise<dynamic>
 
 }
+
+fun <T> DocumentReference.setData(data: T, merge: Boolean): Promise<WriteResult> = set(data, json("merge" to merge))
 
 fun DocumentReference.setValues(vararg pairs: Pair<String, Any?>): Promise<WriteResult> {
     return set(json(*pairs))

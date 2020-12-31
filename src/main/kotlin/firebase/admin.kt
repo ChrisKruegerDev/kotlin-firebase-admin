@@ -1,6 +1,8 @@
 package firebase
 
 import kotlin.js.Date
+import kotlin.js.Promise
+import kotlin.js.json
 
 @JsModule("firebase-admin")
 external object admin {
@@ -22,6 +24,7 @@ external object admin {
 
         open class Firestore {
             fun collection(collectionPath: String): CollectionReference
+            fun batch(): WriteBatch
         }
 
         open class Timestamp {
@@ -59,7 +62,18 @@ external object admin {
         }
     }
 
+    open class WriteBatch {
+        fun commit(): Promise<Unit>
+        fun delete(documentReference: DocumentReference): WriteBatch
+        fun set(documentReference: DocumentReference, data: Any, options: Any? = definedExternally): WriteBatch
+        fun update(documentReference: DocumentReference, data: Any): WriteBatch
+        fun update(documentReference: DocumentReference, field: Any, value: Any?, vararg moreFieldsAndValues: Any?): WriteBatch
+    }
+
 }
 
+fun admin.WriteBatch.setData(documentRef: DocumentReference, data: Any, merge: Boolean) =
+    set(documentRef, data, json("merge" to merge))
 
-
+fun admin.WriteBatch.setData(documentRef: DocumentReference, data: Any, vararg mergeFields: String) =
+    set(documentRef, data, json("mergeFields" to mergeFields))
