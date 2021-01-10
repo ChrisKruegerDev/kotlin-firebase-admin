@@ -38,6 +38,10 @@ external object admin {
             }
 
             fun toDate(): Date
+
+            /**
+             * seconds * 1000 + (nanoseconds / 1000000.0)
+             */
             fun toMillis(): Double
             fun isEqual(other: Timestamp): Boolean
         }
