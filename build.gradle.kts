@@ -32,7 +32,7 @@ kotlin {
 
 dependencies {
     implementation(kotlin("stdlib-js"))
-    implementation("dev.chriskrueger:kotlin-express:1.0.3")
+    implementation("dev.chriskrueger:kotlin-express:1.0.4")
 }
 
 val sourcesJar by tasks.creating(Jar::class) {
@@ -67,7 +67,7 @@ publishing {
             pom {
                 name.set(project.name)
                 description.set("Kotlin wrapper for Firebase Admin.")
-                url.set("https://github.com/chriskrg/${project.name}")
+                url.set("https://github.com/chrisnkrueger/${project.name}")
                 inceptionYear.set("2020")
                 packaging = "jar"
 
@@ -86,12 +86,12 @@ publishing {
                 }
                 issueManagement {
                     system.set("GitHub Issues")
-                    url.set("https://github.com/chriskrg/${project.name}/issues")
+                    url.set("https://github.com/chrisnkrueger/${project.name}/issues")
                 }
                 scm {
-                    connection.set("scm:git:https://github.com/chriskrg/${project.name}.git")
-                    developerConnection.set("scm:git:git@github.com:chriskrg/${project.name}.git")
-                    url.set("https://github.com/chriskrg/${project.name}")
+                    connection.set("scm:git:https://github.com/chrisnkrueger/${project.name}.git")
+                    developerConnection.set("scm:git:git@github.com:chrisnkrueger/${project.name}.git")
+                    url.set("https://github.com/chrisnkrueger/${project.name}")
                 }
             }
         }
