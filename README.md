@@ -1,11 +1,16 @@
-## kotlin-firebase-admin
+[![Issues](https://img.shields.io/github/issues/MoviebaseApp/tmdb-api/total)](http://kotlinlang.org)
+[![Kotlin](https://img.shields.io/badge/kotlin-1.4.32-blue.svg?logo=kotlin)](http://kotlinlang.org)
+[![Twitter](https://img.shields.io/badge/-chrisnkrueger-08a0e9?style=flat&logo=twitter&logoColor=white&link=https://twitter.com/chrisnkrueger/)](https://twitter.com/chrisnkrueger)
+[![GitHub License](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat)](http://www.apache.org/licenses/LICENSE-2.0)
+
+# kotlin-firebase-admin
 A lightweight Kotlin wrapper for Firebase Admin backend API library. Major version number of this wrapper matches that of Firebase itself.
 
-### Setup
+## Setup
 
-#### Project setup for Multiplatform
-Create a new Kotlin Multiplatform project.
-Navigate to folder where function code (Kotlin Multiplatform folder) is going to be stored and type following commands:
+### Project setup
+Create a new Kotlin Multiplatform or  Kotlin/JS project.
+Navigate to folder where function code (Kotlin project folder) is going to be stored and type following commands:
 
 ```
 # Allow Firebase CLI access to your projects
@@ -20,12 +25,11 @@ npm install kotlin --save
 npm install kotlinx-coroutines-core --save
 ```
 
-An example is this project [kotlin-firebase-functions-sample](https://github.com/chrisbln/kotlin-firebase-functions-sample).
+Example project is [kotlin-firebase-functions-sample](https://github.com/chrisbln/kotlin-firebase-functions-sample).
 
 
-#### Using Gradle
+### Using Gradle
 As for all wrappers, make sure that you have the Bintray repository added to your build file:
-
 
 ```kotlin
 repositories {
@@ -50,14 +54,14 @@ implementation(npm("firebase-functions", "3.7.0"))
 implementation(npm("kotlinx-coroutines-core", "1.3.7"))
 ```
 
-### Getting started
+## Getting started
 Initialize a new firebase app instance:
 
 ```kotlin
 val app = admin.initializeApp()
 ```
 
-#### HTTP request
+### HTTP request
 
 ```kotlin
 val app = express()
@@ -67,7 +71,7 @@ app.get("") { _, res ->
 exports.hello = firebaseApp.https.onRequest(app)
 ```
 
-#### Firestore trigger
+### Firestore trigger
 
 ```kotlin
 exports.updateName = functions.firestore
