@@ -1,10 +1,11 @@
 [![Maven Central](https://img.shields.io/maven-central/v/dev.chriskrueger/kotlin-firebase-admin?label=Maven%20Central)](https://search.maven.org/artifact/dev.chriskrueger/kotlin-firebase-admin)
 [![Kotlin](https://img.shields.io/badge/kotlin-1.4.32-blue.svg?logo=kotlin)](http://kotlinlang.org)
 [![Gradle](https://img.shields.io/badge/Gradle-7-green?style=flat)](https://gradle.org)
+[![Twitter](https://img.shields.io/badge/-chrisnkrueger-08a0e9?style=flat&logo=twitter&logoColor=white&link=https://twitter.com/chrisnkrueger/)](https://twitter.com/chrisnkrueger)
 [![GitHub License](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat)](http://www.apache.org/licenses/LICENSE-2.0)
 
 # kotlin-firebase-admin
-A Kotlin wrapper for Firebase Admin backend API library. Major version number of this wrapper matches that of Firebase itself.
+A lightweight Kotlin wrapper for Firebase Admin backend API library. Major version number of this wrapper matches that of Firebase itself.
 
 ## Adding to your project
 
@@ -31,7 +32,7 @@ dependencies {
 ## Setup for Firebase in Kotlin project
 
 ### Firebase installation
-Create a new Kotlin/JS or Kotlin Multiplatform project.
+Create a new Kotlin Multiplatform or  Kotlin/JS project.
 Navigate to folder where the function code is going to be stored and type following commands:
 
 ```
@@ -47,7 +48,7 @@ npm install kotlin --save
 npm install kotlinx-coroutines-core --save
 ```
 
-An example is this project [kotlin-firebase-functions-sample](https://github.com/chrisbln/kotlin-firebase-functions-sample).
+Example project is [kotlin-firebase-functions-sample](https://github.com/chrisbln/kotlin-firebase-functions-sample).
 
 ### Gradle dependencies
 
