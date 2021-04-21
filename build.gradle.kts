@@ -1,22 +1,30 @@
 plugins {
-    id("org.jetbrains.kotlin.js") version "1.4.21"
+    id("org.jetbrains.kotlin.js") version Versions.kotlin
+    id("io.github.gradle-nexus.publish-plugin") version Versions.nexus
     id("maven-publish")
+    id("signing")
 }
 
-val version_major: String by project
-val version_minor: String by project
-val version_patch: String by project
-val kotlin_version: String by project
-
-
 group = "dev.chriskrueger"
-version = "$version_major.$version_minor.$version_patch"
+version = Versions.versionName
+
+nexusPublishing {
+    repositories {
+        sonatype {
+            nexusUrl.set(uri("https://s01.oss.sonatype.org/service/local/"))
+            snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
+            username.set(findProperty("SONATYPE_USER") as String?)
+            password.set(findProperty("SONATYPE_PASSWORD") as String?)
+            stagingProfileId.set(findProperty("SONATYPE_STAGING_PROFILE_ID_CHRISKRUEGER") as String?)
+        }
+    }
+}
 
 repositories {
+    google()
+    gradlePluginPortal()
     mavenCentral()
-    jcenter()
-    maven("https://kotlin.bintray.com/kotlinx")
-    maven("https://dl.bintray.com/chriskrueger/maven")
+    mavenLocal()
 }
 
 base {
@@ -32,7 +40,7 @@ kotlin {
 
 dependencies {
     implementation(kotlin("stdlib-js"))
-    implementation("dev.chriskrueger:kotlin-express:1.0.4")
+    implementation("dev.chriskrueger:kotlin-express:1.1.1")
 }
 
 val sourcesJar by tasks.creating(Jar::class) {
@@ -41,39 +49,21 @@ val sourcesJar by tasks.creating(Jar::class) {
 }
 
 publishing {
-    //    https://github.com/gradle/gradle/issues/11412#issuecomment-555413327
-    System.setProperty("org.gradle.internal.publish.checksums.insecure", "true")
-
-    repositories {
-        maven {
-            name = "bintray"
-            setUrl("https://api.bintray.com/maven/chriskrueger/maven/kotlin-firebase-admin/;publish=1;override=1")
-
-            credentials {
-                username = findProperty("BINTRAY_USER") as String?
-                password = findProperty("BINTRAY_API_KEY") as String?
-            }
-        }
-    }
-
     publications {
         create<MavenPublication>("mavenJava") {
-            groupId = project.group.toString()
-            artifactId = "kotlin-firebase-admin"
-            version = "$version_major.$version_minor.$version_patch"
             artifact(sourcesJar)
             from(components["kotlin"])
 
             pom {
-                name.set(project.name)
+                name.set("kotlin-firebase-admin")
                 description.set("Kotlin wrapper for Firebase Admin.")
-                url.set("https://github.com/chrisnkrueger/${project.name}")
-                inceptionYear.set("2020")
+                url.set("https://github.com/chrisnkrueger/kotlin-firebase-admin")
+                inceptionYear.set("2021")
                 packaging = "jar"
 
                 developers {
                     developer {
-                        id.set("chriskrueger")
+                        id.set("chrisnkrueger")
                         name.set("Christian Krüger")
                         email.set("christian.krueger@moviebase.app")
                     }
@@ -86,14 +76,19 @@ publishing {
                 }
                 issueManagement {
                     system.set("GitHub Issues")
-                    url.set("https://github.com/chrisnkrueger/${project.name}/issues")
+                    url.set("https://github.com/chrisnkrueger/kotlin-firebase-admin/issues")
                 }
                 scm {
-                    connection.set("scm:git:https://github.com/chrisnkrueger/${project.name}.git")
-                    developerConnection.set("scm:git:git@github.com:chrisnkrueger/${project.name}.git")
-                    url.set("https://github.com/chrisnkrueger/${project.name}")
+                    connection.set("scm:git:https://github.com/chrisnkrueger/kotlin-firebase-admin.git")
+                    developerConnection.set("scm:git:git@github.com:chrisnkrueger/kotlin-firebase-admin.git")
+                    url.set("https://github.com/chrisnkrueger/kotlin-firebase-admin")
                 }
             }
         }
     }
 }
+
+signing {
+    sign(publishing.publications)
+}
+

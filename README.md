@@ -1,11 +1,38 @@
-## kotlin-firebase-admin
-A lightweight Kotlin wrapper for Firebase Admin backend API library. Major version number of this wrapper matches that of Firebase itself.
+[![Maven Central](https://img.shields.io/maven-central/v/dev.chriskrueger/kotlin-firebase-admin?label=Maven%20Central)](https://search.maven.org/artifact/dev.chriskrueger/kotlin-firebase-admin)
+[![Kotlin](https://img.shields.io/badge/kotlin-1.4.32-blue.svg?logo=kotlin)](http://kotlinlang.org)
+[![Gradle](https://img.shields.io/badge/Gradle-7-green?style=flat)](https://gradle.org)
+[![GitHub License](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat)](http://www.apache.org/licenses/LICENSE-2.0)
 
-### Setup
+# kotlin-firebase-admin
+A Kotlin wrapper for Firebase Admin backend API library. Major version number of this wrapper matches that of Firebase itself.
 
-#### Project setup for Multiplatform
-Create a new Kotlin Multiplatform project.
-Navigate to folder where function code (Kotlin Multiplatform folder) is going to be stored and type following commands:
+## Adding to your project
+
+The library is published to Maven Central.
+
+### Gradle
+
+Add the Maven Central repository if it is not already there.
+
+```kotlin
+repositories {
+    mavenCentral()
+}
+```
+
+To use the library in a single-platform project, add a dependency.
+
+```kotlin
+dependencies {
+    implementation("dev.chriskrueger:kotlin-firebase-admin:1.4.0")
+}
+```
+
+## Setup for Firebase in Kotlin project
+
+### Firebase installation
+Create a new Kotlin/JS or Kotlin Multiplatform project.
+Navigate to folder where the function code is going to be stored and type following commands:
 
 ```
 # Allow Firebase CLI access to your projects
@@ -22,24 +49,12 @@ npm install kotlinx-coroutines-core --save
 
 An example is this project [kotlin-firebase-functions-sample](https://github.com/chrisbln/kotlin-firebase-functions-sample).
 
+### Gradle dependencies
 
-#### Using Gradle
-As for all wrappers, make sure that you have the Bintray repository added to your build file:
-
-
+To start using `kotlin-firebase-functions` in your Kotlin/JS project, add the following four dependencies to the `dependencies` block for your JavaScript target inside your `build.gradle` file:
 ```kotlin
-repositories {
-    // . . .
-    maven("https://dl.bintray.com/chrisbln/maven")
-    // . . .
-}
-```
-
-
-To start using `kotlin-firebase-functions` in your Kotlin/JS project, add the following four dependencies to the `dependencies` block for your JavaScript target inside your `build.gradle.kts` or `build.gradle` file:
-```kotlin
-implementation("com.chrisbln:kotlin-firebase-functions:1.1.0")
-implementation("com.chrisbln:kotlin-express:1.0.1")
+implementation("dev.chriskrueger:kotlin-firebase-admin:1.4.0")
+implementation("dev.chriskrueger:kotlin-express:1.1.1")
 
 implementation(npm("text-encoding", "0.7.0"))
 implementation(npm("compression", "1.7.4"))
