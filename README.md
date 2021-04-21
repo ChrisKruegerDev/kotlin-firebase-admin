@@ -29,11 +29,10 @@ dependencies {
 }
 ```
 
-## Setup for Firebase in Kotlin project
+## Setup Firebase in Kotlin project
 
 ### Firebase installation
-Create a new Kotlin Multiplatform or  Kotlin/JS project.
-Navigate to folder where the function code is going to be stored and type following commands:
+Create a new Kotlin Multiplatform or  Kotlin/JS project. Navigate to folder where the function code is going to be stored and type following commands:
 
 ```
 # Allow Firebase CLI access to your projects
@@ -66,7 +65,7 @@ implementation(npm("firebase-functions", "3.7.0"))
 implementation(npm("kotlinx-coroutines-core", "1.3.7"))
 ```
 
-### Getting started
+## Getting started
 Initialize a new firebase app instance:
 
 ```kotlin
